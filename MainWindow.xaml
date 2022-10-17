@@ -4,9 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FS19ModManager"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" MinHeight="200" MinWidth="400"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        fw:AcrylicWindow.Enabled="True"
+        fw:AcrylicWindow.FallbackColor="{DynamicResource SystemAltMediumHighColor}"
+        fw:AcrylicWindow.ExtendViewIntoTitleBar="True"
+        fw:AcrylicWindow.NoiseOpacity="0.05"
+        fw:AcrylicPanel.NoiseOpacity="0.05">
+
+    <Window.Resources>
+        <Style x:Key="AppTitleBarStyle" TargetType="ui:TitleBarControl">
+            <Setter Property="ui:ThemeManager.RequestedTheme" Value="Dark" />
+        </Style>
+        <Style x:Key="AppTitleBarButtonStyle" TargetType="ui:TitleBarButton">
+            <Setter Property="IsActive" Value="{Binding IsActive, ElementName=Window}" />
+        </Style>
+        <Style x:Key="AppTitleBarBackButtonStyle" TargetType="ui:TitleBarButton" BasedOn="{StaticResource TitleBarBackButtonStyle}">
+            <Setter Property="IsActive" Value="{Binding IsActive, ElementName=Window}" />
+        </Style>
+    </Window.Resources>
+
+    <ui:Frame Loaded="ContentFrame_Loaded" x:Name="ContentFrame" HorizontalAlignment="Stretch">
+        <ui:Frame.ContentTransitions>
+            <ui:TransitionCollection>
+                <ui:NavigationThemeTransition />
+            </ui:TransitionCollection>
+        </ui:Frame.ContentTransitions>
+    </ui:Frame>
 </Window>

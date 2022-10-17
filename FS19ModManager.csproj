@@ -2,13 +2,40 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.18362.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <SupportedOSPlatformVersion>8.0</SupportedOSPlatformVersion>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="FS19MMmini.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="DesignTimeResources.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentWPF" Version="0.10.2" />
+    <PackageReference Include="ModernWpfUI" Version="0.9.6" />
     <PackageReference Include="Pfim" Version="0.11.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="FS19MMmini.png" />
+  </ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="Properties\DesignTimeResources.xaml">
+	    <SubType>Designer</SubType>
+	    <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+	  </Page>
+	</ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModernWpf.Media.Animation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,28 @@ namespace FS19ModManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static ModernWpf.Controls.Frame? navigator { get; private set; }
+        public static void Navigate<T>(object data, NavigationTransitionInfo animation) where T: Page
+        {
+            navigator?.Navigate(typeof(T), data, new DrillInNavigationTransitionInfo());
+        }
+        public static void Navigate<T>() where T : Page
+        {
+            navigator?.Navigate(typeof(T));
+        }
+        public static void Navigate<T>(object data) where T : Page
+        {
+            navigator?.Navigate(typeof(T), data);
+        }
         public MainWindow()
         {
             InitializeComponent();
+            navigator = ContentFrame;
+        }
+
+        private void ContentFrame_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
