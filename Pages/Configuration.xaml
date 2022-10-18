@@ -1,0 +1,81 @@
+﻿<Page x:Class="FS19ModManager.Pages.Configuration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FS19ModManager.Pages"
+      mc:Ignorable="d" 
+      xmlns:ui="http://schemas.modernwpf.com/2019"
+      d:DesignHeight="350" d:DesignWidth="500"
+      Title="Configuration">
+
+    <ui:SimpleStackPanel>
+        <TextBlock HorizontalAlignment="Center" Text="{Binding TitleText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource HeaderTextBlockStyle}" />
+        <TextBlock HorizontalAlignment="Center" Margin="35,0">Enter your Game and mod directories (you most likely won't need to change this)</TextBlock>
+        <StackPanel Margin="0,10,0,0">
+            <DockPanel Margin="25, 25 , 25, 12.5">
+                <Button Click="Game_Click" DockPanel.Dock="Right">
+                    <ui:FontIcon Glyph="&#xE838;"/>
+                </Button>
+                <Grid DockPanel.Dock="Left">
+                    <TextBox VerticalContentAlignment="Center" x:Name="GameBox" HorizontalAlignment="Stretch" Style="{StaticResource TextBoxRevealStyle}" Text="{Binding GamePath}"/>
+                    <TextBlock IsHitTestVisible="False" Text="Enter Game Directory" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=GameBox}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+            </DockPanel>
+            <DockPanel Margin="25, 12.5">
+                <Button Click="Mods_Click" DockPanel.Dock="Right">
+                    <ui:FontIcon Glyph="&#xE838;"/>
+                </Button>
+                <Grid DockPanel.Dock="Left">
+                    <TextBox VerticalContentAlignment="Center" x:Name="ModsBox" HorizontalAlignment="Stretch" Style="{StaticResource TextBoxRevealStyle}" Text="{Binding ModsPath}"/>
+                    <TextBlock IsHitTestVisible="False" Text="Enter Mods Directory" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=ModsBox}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+            </DockPanel>
+            <DockPanel Margin="25, 12.5">
+                <Button Click="AllMods_Click" DockPanel.Dock="Right">
+                    <ui:FontIcon Glyph="&#xE838;"/>
+                </Button>
+                <Grid DockPanel.Dock="Left">
+                    <TextBox VerticalContentAlignment="Center" x:Name="AllModsBox" HorizontalAlignment="Stretch" Style="{StaticResource TextBoxRevealStyle}" Text="{Binding AllModsPath}"/>
+                    <TextBlock IsHitTestVisible="False" Text="Enter New Mods directory" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=AllModsBox}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+            </DockPanel>
+        </StackPanel>
+        <Button Click="SaveButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30" Style="{DynamicResource AccentButtonStyle}">
+            <Bold>Save</Bold>
+        </Button>
+    </ui:SimpleStackPanel>
+</Page>

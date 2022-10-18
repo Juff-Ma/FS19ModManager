@@ -7,9 +7,11 @@
     <UseWPF>true</UseWPF>
     <SupportedOSPlatformVersion>8.0</SupportedOSPlatformVersion>
     <ApplicationIcon>logo.ico</ApplicationIcon>
+    <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="FS19MM.png" />
     <None Remove="FS19MMmini.png" />
   </ItemGroup>
 
@@ -18,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="FS19MM.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="logo.ico" />
   </ItemGroup>
 
@@ -36,6 +41,16 @@
 	    <SubType>Designer</SubType>
 	    <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
 	  </Page>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="config\profiles\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="config\config.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

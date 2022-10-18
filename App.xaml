@@ -4,7 +4,9 @@
              xmlns:local="clr-namespace:FS19ModManager"
              StartupUri="MainWindow.xaml"
              xmlns:ui="http://schemas.modernwpf.com/2019"
-             xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF">
+             xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+             Startup="Application_Startup"
+             Exit="Application_Exit">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

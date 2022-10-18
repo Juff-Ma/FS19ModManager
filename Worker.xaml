@@ -1,0 +1,21 @@
+﻿<Window x:Class="FS19ModManager.Worker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FS19ModManager"
+        mc:Ignorable="d"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        Height="125" Width="300"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ResizeMode="CanMinimize" WindowStyle="ToolWindow" ui:TitleBar.IsIconVisible="True"
+        Background="{DynamicResource SystemChromeLowColorBrush}"
+        Title="Starting Operation">
+    <ui:SimpleStackPanel>
+        <Label HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Margin="10,5" x:Name="Description"/>
+        <DockPanel Margin="0,10">
+            <Label Content="{Binding CountText, UpdateSourceTrigger=PropertyChanged}"  MinWidth="75" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" DockPanel.Dock="Right"/>
+            <ui:ProgressBar x:Name="Bar" IsIndeterminate="True" ShowPaused="{Binding Paused, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" HorizontalAlignment="Stretch" Margin="20"/>
+        </DockPanel>
+    </ui:SimpleStackPanel>
+</Window>

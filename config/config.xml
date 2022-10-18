@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config initialised="false">
+	<window height="350" width="500"/>
+	<folders game_root="">
+		<mods></mods>
+		<active></active>
+	</folders>
+</config>
