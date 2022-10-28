@@ -125,6 +125,10 @@ namespace FS19ModManager
         private void Worker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             Count = e.ProgressPercentage;
+            if (e.UserState is string)
+            {
+                Description.Content = e.UserState as string;
+            }
         }
 
         private void Worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)

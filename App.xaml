@@ -7,6 +7,8 @@
              xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
              Startup="Application_Startup"
              Exit="Application_Exit">
+
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

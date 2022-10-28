@@ -76,19 +76,42 @@ namespace FS19ModManager.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (App.Instance?.Config != null && App.Instance.Config.Folders != null)
+            if (System.IO.Directory.Exists(GameBox.Text) &&
+                System.IO.Directory.Exists(ModsBox.Text))
             {
-                App.Instance.Config.Initialised = true;
+                if (App.Instance?.Config != null && App.Instance.Config.Folders != null)
+                {
+                    App.Instance.Config.Initialised = true;
 
-                App.Instance.Config.Folders.GameRoot = GameBox.Text;
-                App.Instance.Config.Folders.Mods = ModsBox.Text;
-                App.Instance.Config.Folders.Active = AllModsBox.Text;
+                    App.Instance.Config.Folders.GameRoot = GameBox.Text;
+                    App.Instance.Config.Folders.Mods = ModsBox.Text;
+                    App.Instance.Config.Folders.Active = AllModsBox.Text;
+                }
+               
+                if (System.IO.Directory.Exists(AllModsBox.Text))
+                {
+                    var result = MessageBox.Show(MainWindow.Instance,
+                        "The new mods folder already contains files/mods. Do you want to index them? If you press no all files alredy contained will be deleted!",
+                        "Index existing Mods?", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+                    if (result == MessageBoxResult.No)
+                        System.IO.Directory.Delete(AllModsBox.Text);
+                }
+                System.IO.Directory.CreateDirectory(AllModsBox.Text);
+
+                if (first)
+                {
+                    MainWindow.Navigate<Thanks>(null, new ModernWpf.Media.Animation.DrillInNavigationTransitionInfo());
+                }
+                else if (this.Parent is Window)
+                {
+                    (this.Parent as Window)?.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show(MainWindow.Instance, "Either the Game or Mods folder don't exist!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (first)
-            {
-                MainWindow.Navigate<Thanks>(null, new ModernWpf.Media.Animation.DrillInNavigationTransitionInfo());
-            }
         }
 
         private void Game_Click(object sender, RoutedEventArgs e)

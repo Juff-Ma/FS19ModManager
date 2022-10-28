@@ -31,6 +31,7 @@
         </Style>
     </Window.Resources>
 
+
     <ui:Frame LoadCompleted="ContentFrame_LoadCompleted" Loaded="ContentFrame_Loaded" x:Name="ContentFrame" HorizontalAlignment="Stretch">
         <ui:Frame.ContentTransitions>
             <ui:TransitionCollection>
